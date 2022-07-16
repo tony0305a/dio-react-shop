@@ -1,11 +1,13 @@
 import React from "react";
+import Footer from "../Components/Footer";
 import * as S from './styled'
 
 const Contato = () => {
   return (
-    <S.WrapperHome>
+    <S.WrapperContato>
       <h1>Contato</h1>
-    </S.WrapperHome>
+      <Footer/>
+    </S.WrapperContato>
   );
 };
 export default Contato;

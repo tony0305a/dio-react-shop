@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import * as S from "./styled";
 import Modal from "react-modal";
+import useStore from "../../Hooks/store-hook";
 
 const customStyles = {
   content: {
@@ -25,10 +26,11 @@ export const Products = () => {
     price: 100,
     description: '',
   });
+  const {imageUrl, apiUrl, session, attCart} = useStore()
 
   useEffect(() => {
     async function get() {
-      fetch("http://localhost:1337/products")
+      fetch(`${apiUrl}/products`)
         .then((res) => res.text())
         .then((x) => setProdutos(JSON.parse(x)));
     }
@@ -47,26 +49,36 @@ export const Products = () => {
   function closeModal() {
     setIsOpen(false);
   }
+  const addCart = async (userid,nome,img,quantidade,preco) =>{
+    const options = {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: `{"userid":${userid},"content":{"nome":"${nome}","img":"${img}","quantidade":${quantidade},"preco":${preco}}}`
+    };
+    
+    fetch(`${apiUrl}/cart/add`, options)
+      .catch(err => console.error(err));
+  }
 
   const call = () => {
-    console.log(produtos);
+    console.log(session[0].id);
   };
   return (
     <S.Wrapper>
+      <button onClick={call} >call</button>
       {produtos.map((item, index) => (
         <S.Item key={index}>
           <S.Title style={{
             backgroundColor:item.titlecolor
           }} >{item.title}</S.Title>
           <S.ItemImage
-            src={`http://localhost:3000/images/${item.img}`}
-            width="200"
-            height="300"
+            src={`${imageUrl}/${item.img}`}
           />
           <S.ItemData>
             <S.ItemName style={{fontColor:"lightgray"}} >{item.name}</S.ItemName>
           <S.Price>R$ {item.price}</S.Price>
           <span>{item.description}</span>
+          <S.Buttons>
           <button
             onClick={() => {
               openModal();
@@ -81,6 +93,16 @@ export const Products = () => {
           >
             Comprar
           </button>
+          <button
+          onClick={()=>{
+            addCart(session[0].id,item.name,item.img,5,item.price)
+            attCart()
+
+          }}
+          >
+            + Carrinho
+          </button>
+          </S.Buttons>
           </S.ItemData>
         </S.Item>
       ))}
@@ -100,7 +122,7 @@ export const Products = () => {
           }}
           >{modalData.name}</S.Title>
           <S.ItemImage
-            src={`http://localhost:3000/images/${modalData.img}`}
+            src={`${imageUrl}/${modalData.img}`}
             width="200"
             height="300"
           />

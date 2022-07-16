@@ -5,7 +5,7 @@ export const Wrapper = styled.div`
   margin: 8px;
   width: 100%;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   flex-wrap: wrap;
   @media screen and (max-width: 720px) {
     flex-direction: column;
@@ -59,6 +59,11 @@ export const ItemData = styled.div`
 `;
 export const ItemImage = styled.img`
   padding: 16px;
+  width:100%;
+  height:300px;
+  @media screen and (max-width: 720px) {
+    width:50%;
+  }
 `;
 export const ItemName = styled.span`
 color:#B3B3B3;
@@ -81,4 +86,10 @@ export const ItemModal = styled.div`
     color: white;
     padding: 4px;
   }
+`;
+export const Buttons = styled.div`
+display:flex;
+justify-content:center;
+align-items:center;
+
 `;
