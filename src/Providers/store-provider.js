@@ -8,6 +8,7 @@ const StoreProvider = ({ children }) => {
   const apiUrl = 'http://localhost:1337';
   const [session, setSession] = useState([])
   const [attCartn,setAttCartn] = useState(0)
+  const [logedInState, setLogedInState] = useState(false)
 
 
   const LogIn = async (data) =>{
@@ -22,6 +23,7 @@ const StoreProvider = ({ children }) => {
       .then(response => {
         if(response.length !== 0){
           setSession(response)
+          setLogedInState(true)
         }else{
           setSession('usuário ou senha incorretos')
         }
@@ -30,6 +32,7 @@ const StoreProvider = ({ children }) => {
   }
   const cleanSession = () =>{
     setSession([])
+    setLogedInState(false)
   }
   const attCart = () =>{
     var n = Math.random()
@@ -42,6 +45,7 @@ const StoreProvider = ({ children }) => {
     apiUrl,
     session,
     attCartn,
+    logedInState,
     LogIn: useCallback((data) => LogIn(data), []),
     cleanSession:useCallback(()=>cleanSession(),[]),
     attCart:useCallback(()=>attCart(),[])

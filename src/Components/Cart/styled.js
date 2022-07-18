@@ -19,3 +19,9 @@ span{
   top:10px;
 }
 `;
+
+export const CartItem = styled.div`
+display:flex;
+flex-direction:column;
+margin:4px;
+`;
