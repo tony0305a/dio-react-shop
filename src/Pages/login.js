@@ -2,21 +2,21 @@ import React, { useEffect } from "react";
 import Footer from "../Components/Footer";
 import * as S from "./styled";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import useStore from "../Hooks/store-hook";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
     const {LogIn, session, cleanSession, attCart}  = useStore()
 
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) =>{
-        attCart()
         cleanSession()
         LogIn(data)
-  };
 
+  };
   useEffect(()=>{
-    console.log(session)
+    attCart()
   },[session])
 
   return (

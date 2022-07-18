@@ -8,7 +8,10 @@ import Cart from "../Cart";
 export const Header = () => {
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => console.log(data);
-  const { imageUrl } = useStore();
+  const { imageUrl, logedInState, cleanSession } = useStore();
+  const cs = () =>[
+    cleanSession()
+  ]
   return (
     <S.Wrapper>
       <S.Buttons>
@@ -26,15 +29,23 @@ export const Header = () => {
         </form>
       </S.Search>
       <S.Login>
-        <Link to="/login">
-          <button>Login</button>
-        </Link>
-        <Link to="/registro">
-          <button>Registre-se</button>
-        </Link>
+        {logedInState ? (
+          <button>Perfil</button>
+        ) : (
+          <Link to="/login">
+            <button>Login</button>
+          </Link>
+        )}
+        {logedInState ? (
+          <button onClick={cs} >Sair</button>
+        ) : (
+          <Link to="/registro">
+            <button>Registre-se</button>
+          </Link>
+        )}
       </S.Login>
       <S.Cart>
-        <Cart/>
+        <Cart />
       </S.Cart>
     </S.Wrapper>
   );

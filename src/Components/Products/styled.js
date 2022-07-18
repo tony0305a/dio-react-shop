@@ -91,5 +91,12 @@ export const Buttons = styled.div`
 display:flex;
 justify-content:center;
 align-items:center;
-
+button{
+  width:40%;
+}
+`;
+export const Desc = styled.span`
+width:100%;
+height:30px;
+overflow:hidden;
 `;

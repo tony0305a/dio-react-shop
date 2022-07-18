@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { StoreContext } from "../Providers/store-provider";
 
 const useStore = () => {
-  const { useProducts, imageUrl, apiUrl, session, LogIn, cleanSession,attCartn, attCart } = useContext(StoreContext);
+  const { useProducts, imageUrl, apiUrl, session, LogIn, cleanSession,attCartn, attCart, logedInState } = useContext(StoreContext);
 
   return {
     useProducts,
@@ -12,7 +12,8 @@ const useStore = () => {
     LogIn,
     cleanSession,
     attCartn,
-    attCart
+    attCart,
+    logedInState
   };
 };
 export default useStore;

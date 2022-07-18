@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import * as S from "./styled";
 import useStore from "../../Hooks/store-hook";
 import Modal from "react-modal";
+import { Link } from "react-router-dom";
 
 const customStyles = {
   content: {
@@ -17,7 +18,6 @@ const customStyles = {
 };
 
 const Cart = () => {
-  const [modalIsOpen, setIsOpen] = useState(false);
   const { imageUrl, session, apiUrl, attCartn } = useStore();
   const [renderCount, setRenderCount] = useState(false);
   const [cart, setCart] = useState([]);
@@ -33,37 +33,22 @@ const Cart = () => {
       }
     }
   }, [attCartn]);
-  function openModal(id) {
-    console.log(id);
-    setIsOpen(true);
-  }
-  function closeModal() {
-    setIsOpen(false);
-  }
 
   return (
     <S.Wrapper>
-      <img src={`${imageUrl}/cart.png`} width="32" onClick={openModal} />
+      <Link to="/carrinho">
+        <img src={`${imageUrl}/cart.png`} width="32" />
+      </Link>
+
       {renderCount ? (
         <>
-          <span onClick={openModal}>{cart.length}</span>
+          <Link to="carrinho">
+            <span>{cart.length}</span>
+          </Link>
         </>
       ) : (
         <></>
       )}
-
-      <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
-        style={customStyles}
-        ariaHideApp={false}
-      >
-        {cart.map((item, index) => (
-          <div key={index}>
-            <span>{item.content.nome}</span>
-          </div>
-        ))}
-      </Modal>
     </S.Wrapper>
   );
 };
