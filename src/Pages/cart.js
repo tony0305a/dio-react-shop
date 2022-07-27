@@ -4,7 +4,7 @@ import useStore from "../Hooks/store-hook";
 import * as S from "./styled";
 
 const Cart = () => {
-  const { imageUrl, session, apiUrl, attCartn, attCart } = useStore();
+  const { imageUrl, session, apiUrl, attCartn, attCart, watchCart } = useStore();
   const [renderCount, setRenderCount] = useState(false);
   const [cart, setCart] = useState([]);
   const [cartTotal, setCartTotal] = useState(0)
@@ -12,7 +12,7 @@ const Cart = () => {
 
   useEffect(() => {
     if (session.length !== 0) {
-      fetch(`${apiUrl}/cart/${session[0].id}`)
+      fetch(`${apiUrl}/cart/${session.user[0].id}`)
         .then((response) => response.json())
         .then((response) => setCart(response))
         .catch((err) => console.error(err));
@@ -25,7 +25,7 @@ const Cart = () => {
   
   useEffect(() => {
     if (session.length !== 0) {
-      fetch(`${apiUrl}/cart/${session[0].id}`)
+      fetch(`${apiUrl}/cart/${session.user[0].id}`)
         .then((response) => response.json())
         .then((response) => setCart(response))
         .catch((err) => console.error(err));
@@ -52,6 +52,7 @@ const removeItem = async (id) =>{
     const options = {method: 'DELETE'};
  await fetch(`${apiUrl}/cart/delete/${id}`, options)
   .catch(err => console.error(err));
+  watchCart(session.user[0].id)
   setAttState(Math.random())
 }
 
@@ -71,17 +72,17 @@ const removeItem = async (id) =>{
                 width="240"
                 height="248"
               />
-              <span>Preço Unid: R$ {item.content.preco}</span>
+              <span>Preço Unid: R$ {(item.content.preco).toLocaleString('pt-BR',{minimumFractionDigits: 2})}</span>
               <span>Quantidade: {item.content.quantidade}</span>
-              <span>Total: {(item.content.preco)*(item.content.quantidade)}  </span>
+              <span>Total: {((item.content.preco)*(item.content.quantidade)).toLocaleString('pt-BR')}  </span>
   
             </S.CartItem>
       ))}
                 </S.CartItemArea>
                 <S.CartPayoutArea>
                     <h1>Total do Carrinho</h1>
-                    <span>{cartTotal}</span>
-                    <button>Finalizar</button>
+                    <span>{cartTotal.toLocaleString('pt-BR')}</span>
+                    <button  className="btn btn-primary" >Finalizar</button>
                 </S.CartPayoutArea>
               </S.CartBody>
       <Footer />

@@ -51,12 +51,10 @@ margin:8px;
 `;
 export const CartBody = styled.div`
 display:flex;
-margin:8px;
 `;
 export const CartItemArea = styled.div`
 display:flex;
 flex-direction:column;
-justify-content:flex-start;
 align-items:center;
 height:700px;
 width:50%;
@@ -64,7 +62,6 @@ overflow:scroll;
 &::-webkit-scrollbar{
     display:none;
 }
-border:1px solid black;
 
 `;
 export const CartItem = styled.div`
@@ -72,7 +69,6 @@ display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
-margin:8px;
 #title{
     display:flex;
     width:100%;

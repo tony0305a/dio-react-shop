@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import * as S from "./styled";
 import useStore from "../../Hooks/store-hook";
-import Modal from "react-modal";
 import { Link } from "react-router-dom";
 
 const customStyles = {
@@ -18,21 +17,20 @@ const customStyles = {
 };
 
 const Cart = () => {
-  const { imageUrl, session, apiUrl, attCartn } = useStore();
+  const { imageUrl, session, cartState, watchCart } = useStore();
   const [renderCount, setRenderCount] = useState(false);
-  const [cart, setCart] = useState([]);
+  const [cartCount, setCartCount] = useState(0);
 
   useEffect(() => {
-    if (session.length !== 0) {
-      fetch(`${apiUrl}/cart/${session[0].id}`)
-        .then((response) => response.json())
-        .then((response) => setCart(response))
-        .catch((err) => console.error(err));
-      if (cart.length !== 0) {
-        setRenderCount(true);
-      }
+    if(session.length !== 0){
+      watchCart(session.user[0].id)
+      setRenderCount(true)
     }
-  }, [attCartn]);
+  }, [])
+
+  useEffect(()=>{
+    setCartCount(cartState.length)
+  })
 
   return (
     <S.Wrapper>
@@ -43,11 +41,11 @@ const Cart = () => {
       {renderCount ? (
         <>
           <Link to="carrinho">
-            <span>{cart.length}</span>
+            <span>{cartCount}</span>
           </Link>
         </>
       ) : (
-        <></>
+        <><span>0</span></>
       )}
     </S.Wrapper>
   );

@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const Wrapper = styled.footer`
 display:flex;
 flex-direction:column;
+margin:8px;
 `
 export const Column1 = styled.div`
 display:flex;

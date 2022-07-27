@@ -16,16 +16,15 @@ export const Header = () => {
     <S.Wrapper>
       <S.Buttons>
         <Link to="/">
-          <button>Inicio</button>
+          <button>Home</button>
         </Link>
-
         <Link to="/contato">
-          <button>Contato</button>
+          <button>Sobre</button>
         </Link>
       </S.Buttons>
       <S.Search>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <input {...register("item")} placeholder="Pesquisa" />
+          <input {...register("item")} placeholder="Busque aqui o seu produto" />
         </form>
       </S.Search>
       <S.Login>

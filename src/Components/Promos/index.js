@@ -21,16 +21,17 @@ const Promos = () => {
 
 
   return (
-      <Carousel  mobileBreakpoint={100} cols={1} rows={1} loop={true} autoPlay={100}>
+      <S.Wrapper>
+      <Carousel  mobileBreakpoint={100} cols={1} rows={1} loop={true} autoPlay={100} showDots={true} >
         {promos.map((item,index)=>(
                   <Carousel.Item key={index} >
                     <S.SlideItem>
-                    <img src={`${imageUrl}/${item.img}`} width="100%" height="400" />
-                    <button>Acessar</button>
+                    <img src={`${imageUrl}/${item.img}`} width="100%" height="100%"/>
                     </S.SlideItem>
                   </Carousel.Item>
         ))}
       </Carousel>
+      </S.Wrapper>
   );
 };
 export default Promos;

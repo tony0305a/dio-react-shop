@@ -5,6 +5,7 @@ import Contato from "./Pages/contato";
 import Login from "./Pages/login";
 import Cadastro from "./Pages/cadastro";
 import Cart from "./Pages/cart";
+import Details from "./Components/Details";
 
 const MainRoutes = () =>{
     return(
@@ -28,6 +29,10 @@ const MainRoutes = () =>{
             <Route 
             path="/carrinho"
             element={<Cart/>}
+            />
+            <Route
+            path="/produtos/:id"
+            element={<Details/>}
             />
         </Routes>
     )
