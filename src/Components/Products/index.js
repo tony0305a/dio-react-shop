@@ -4,6 +4,7 @@ import Modal from "react-modal";
 import useStore from "../../Hooks/store-hook";
 import Pagination from "./Pagination";
 import { Link } from "react-router-dom"
+import Stars from "../Rating";
 const customStyles = {
   content: {
     width: "500px",
@@ -37,14 +38,19 @@ export const Products = () => {
     watchCart,
     productState,
     getProducts,
+    searchTermState
   } = useStore();
   const [prodCount, setProdCount] = useState(0);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage] = useState(8);
+  const [idUser, setIdUser] = useState(0)
 
   useEffect(() => {
     getProducts();
+    if(session.length !== 0){
+      setIdUser(session.user[0].id)
+    }
     /*
     async function get() {
       setLoading(true);
@@ -62,6 +68,9 @@ export const Products = () => {
   useEffect(() => {
     console.log(productState);
   }, [productState]);
+  useEffect(()=>{
+    console.log(searchTermState)
+  },[searchTermState])
 
   function openModal() {
     setIsOpen(true);
@@ -109,7 +118,13 @@ export const Products = () => {
   return (
     <S.OuterDiv>
       <S.Wrapper>
-        {currentProducts.map((item, index) => (
+        {currentProducts.filter((val)=>{
+          if(searchTermState == ""){
+            return val
+          } else if ((val.name).toLowerCase().includes(searchTermState.toLowerCase())){
+            return val
+          }
+        }).map((item, index) => (
           <S.Item key={index}>
             <S.Title
               style={{
@@ -125,6 +140,7 @@ export const Products = () => {
               <S.ItemName>{item.name}</S.ItemName>
               <S.Price>R$ {item.price}</S.Price>
               <S.Desc>{item.description}</S.Desc>
+              <Stars  prodId={item.id} userId={idUser} />
               <S.Buttons>
                 <button
                   onClick={() => {

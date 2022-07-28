@@ -18,6 +18,8 @@ const useStore = () => {
     watchCart,
     productState,
     getProducts,
+    searchTermState,
+    searchFilter
   } = useContext(StoreContext);
 
   return {
@@ -36,6 +38,8 @@ const useStore = () => {
     watchCart,
     productState,
     getProducts,
+    searchTermState,
+    searchFilter
   };
 };
 export default useStore;

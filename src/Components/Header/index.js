@@ -8,7 +8,7 @@ import Cart from "../Cart";
 export const Header = () => {
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => console.log(data);
-  const { imageUrl, logedInState, cleanSession } = useStore();
+  const { imageUrl, logedInState, cleanSession, searchFilter } = useStore();
   const cs = () =>[
     cleanSession()
   ]
@@ -24,7 +24,7 @@ export const Header = () => {
       </S.Buttons>
       <S.Search>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <input {...register("item")} placeholder="Busque aqui o seu produto" />
+          <input {...register("item")} placeholder="Busque aqui o seu produto"  onChange={(event)=>searchFilter(event.target.value)} />
         </form>
       </S.Search>
       <S.Login>
