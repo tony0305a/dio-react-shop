@@ -13,6 +13,7 @@ const StoreProvider = ({ children }) => {
   const [loginError, SetLoginErrror] = useState(false);
   const [cartState, setCartState] = useState([]);
   const [productState, setProductState] = useState([])
+  const [searchTermState, setSearchTermState] = useState("")
 
 
 
@@ -20,6 +21,10 @@ const StoreProvider = ({ children }) => {
     const res = await api.get(`/products`)
     setProductState(res.data)
 
+  }
+
+  const searchFilter = (string) =>{
+    setSearchTermState(string)
   }
 
   const addCart = async (userid, nome, img, quantidade, preco) => {
@@ -78,7 +83,9 @@ const StoreProvider = ({ children }) => {
     loginError,
     cartState,
     productState,
+    searchTermState,
     LogIn: useCallback((data) => LogIn(data), []),
+    searchFilter: useCallback((string) => searchFilter(string), []),
     getProducts: useCallback(() => getProducts(), []),
     watchCart: useCallback((userid) => watchCart(userid), [addCart]),
     addCart: useCallback(
