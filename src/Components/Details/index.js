@@ -7,13 +7,15 @@ import Frete from "../Frete";
 import Stars from "../Rating";
 
 const Details = () => {
-  const { imageUrl } = useStore();
+  const { imageUrl, session } = useStore();
   const { id } = useParams();
   const [product, setProduct] = useState([]);
   const [loading, setLoading] = useState(false);
   const [mainImage, setMainImage] = useState("");
   const [gallery, setGallery] = useState([]);
   const [sizes, setSizes] = useState([]);
+  const [userId, setUserId] = useState(0)
+  const [prodId,setProdId] = useState(0)
   useEffect(() => {
     const getDatafromId = async () => {
       setLoading(true);
@@ -23,10 +25,16 @@ const Details = () => {
         setMainImage(item.imgs.img[0]);
         setGallery(item.imgs.img);
         setSizes(item.sizes);
+        setProdId(item.id)
       });
 
       setLoading(false);
     };
+
+    if(session.length !== 0){
+      setUserId(session.user[0].id)
+    }
+
     getDatafromId();
   }, []);
   useEffect(() => {
@@ -68,7 +76,7 @@ const Details = () => {
           <hr />
           <h3>{product.description}</h3>
           <hr />
-          <Stars/>
+          <Stars prodId={prodId} userId={userId} />
           <hr/>
           <div>
             {sizes.PP ? (
@@ -131,6 +139,10 @@ const Details = () => {
           <hr />
           <Frete />
           <hr />
+          <div className="container" >
+          <button className="btn btn-primary">Comprar</button>
+          </div>
+          <hr/>
         </S.Values>
       </S.Payment>
     </S.Wrapper>

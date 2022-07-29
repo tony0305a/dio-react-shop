@@ -6,6 +6,14 @@ export const Wrapper = styled.div`
   hr {
     width: 100%;
   }
+  .container{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    button{
+      margin:8px;
+    }
+  }
 `;
 export const Product = styled.div`
   display: flex;
