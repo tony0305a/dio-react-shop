@@ -5,8 +5,8 @@ export const StoreContext = createContext();
 
 const StoreProvider = ({ children }) => {
   const [useProducts, setUseProducts] = useState([]);
-  const imageUrl = "http://localhost:3000/images";
-  const apiUrl = "http://localhost:1337";
+  const imageUrl = "https://dio-react-shop.vercel.app/images";
+  const apiUrl = "https://api-dio-shop.herokuapp.com";
   const [session, setSession] = useState([]);
   const [attCartn, setAttCartn] = useState(0);
   const [logedInState, setLogedInState] = useState(false);
@@ -51,7 +51,7 @@ const StoreProvider = ({ children }) => {
       body: `{"email":"${data.email}","password":"${data.senha}"}`,
     };
 
-    fetch("http://localhost:1337/user/login", options)
+    fetch("https://api-dio-shop.herokuapp.com/user/login", options)
       .then((response) => response.json())
       .then((response) => {
         if (response.length !== 0) {
