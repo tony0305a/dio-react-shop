@@ -7,7 +7,7 @@ import Cart from "../Cart";
 
 export const Header = () => {
   const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => console.log('data');
   const { imageUrl, logedInState, cleanSession, searchFilter } = useStore();
   const cs = () =>[
     cleanSession()

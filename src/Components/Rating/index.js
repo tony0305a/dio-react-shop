@@ -24,7 +24,6 @@ const Stars = ({prodId, userId}) => {
              
         }
         starsMedia = totalStars / rates
-        console.log(starsMedia)
 
         
 
@@ -33,14 +32,11 @@ const Stars = ({prodId, userId}) => {
 
 
     const handleRating = async (rate) =>{
-        console.log(userId,'userid')
-        console.log(prodId,'prodid')
        const res = await api.get(`/rating/check/${userId}/${prodId}`)
        if(res.data.length === 0 ){
         console.log('sem avaliações para o produto')
             const add = await api.post(`/rating/add`,{prodid:prodId,userid:userId,stars:rate})
        }
-       console.log(res.data)
     }
 
 

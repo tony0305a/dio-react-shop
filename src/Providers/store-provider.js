@@ -44,7 +44,6 @@ const StoreProvider = ({ children }) => {
   }
 
   const LogIn = async (data) => {
-    console.log(data);
     const options = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -57,7 +56,6 @@ const StoreProvider = ({ children }) => {
         if (response.length !== 0) {
           setSession(response);
           setLogedInState(true);
-          console.log(response);
         } else {
           SetLoginErrror(true);
         }

@@ -66,10 +66,8 @@ export const Products = () => {
   }, []);
 
   useEffect(() => {
-    console.log(productState);
   }, [productState]);
   useEffect(()=>{
-    console.log(searchTermState)
   },[searchTermState])
 
   function openModal() {
@@ -108,7 +106,6 @@ export const Products = () => {
   };
 
   const call = () => {
-    console.log(session[0].id);
   };
 
   if (loading) {

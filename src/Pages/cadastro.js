@@ -14,7 +14,6 @@ const Cadastro = () => {
   });
   const { register, handleSubmit } = useForm();
   const onSubmit = async (data) => {
-    console.log(data.email);
     const nome = data.nome;
     const email = data.email;
     var senha = data.senha;
@@ -31,7 +30,6 @@ const Cadastro = () => {
         .then((response) => response.json())
         .then((response) => (check = response))
         .catch((err) => console.error(err));
-      console.log(check);
       if (check.length === 0) {
         const options = {
           method: "POST",

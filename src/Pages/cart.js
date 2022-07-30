@@ -41,7 +41,6 @@ useEffect(()=>{
         var qntUnit = 0
         var prec = 0
         for(var i  in cart){
-       //     console.log(cart[i].content.preco)
         qntUnit += parseFloat(cart[i].content.quantidade *  cart[i].content.preco )
         }
        setCartTotal(qntUnit)
