@@ -31,7 +31,6 @@ const Items = () =>{
 
 
     const call = () =>{
-        console.log(currentProducts)
     }
 
     if(loading){
