@@ -2,11 +2,12 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
   display: flex;
-  background-color: #0d6efd;
-  flex-direction:column;
-  height: 160px;
+  background-color: #ffffff;
+  flex-direction: column;
+  height: 85px;
   width: 100%;
   align-items: center;
+  justify-content: center;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
     rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
   @media screen and (max-width: 720px) {
@@ -14,25 +15,66 @@ export const Wrapper = styled.div`
   }
 `;
 export const Line = styled.div`
-display:flex;
-width:100%;
-align-items:center;
-margin-top:32px;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  height: 40px;
+  align-items: center;
 `;
 export const Nav = styled.div`
-span{
-  font-weight:bold;
-  color:white;
-}
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  span {
+    font-weight: bold;
+    color: black;
+    align-items: center;
+  }
+  #cep {
+    display: flex;
+    align-items: center;
+    width: 130px;
+    span {
+      font-size: 12px;
+    }
+  }
+  ul {
+    display: flex;
+    margin-left: 48px;
+    li {
+      display: flex;
+      align-items: center;
+      a {
+        width: 139px;
+        height: 30px;
+        color: black;
+        font-weight: bold;
+        margin: 4px;
+      }
+      .trend {
+        color: black;
+        background: #ffffff;
+        display: inline-block;
+        text-align: center;
+        cursor: pointer;
+        box-shadow: inset 0 0 0 0 #ffffff;
+        -webkit-transition: all 0.3 ease 0s;
+        -moz-transition: all 0.3 ease 0s;
+        transition: all 0.3 ease 0s;
+        &:hover {
+          background: #92b4ec;
+          color: black;
+        }
+      }
+    }
+  }
 `;
 export const Buttons = styled.div`
   display: flex;
-  width: 20%;
-  margin: 8px;
-  justify-content: space-around;
+  width: 163px;
+  justify-content: flex-start;
   button {
-    color: white;
+    color: black;
     padding: 8px;
     border-radius: 4px;
     &:hover {
@@ -55,7 +97,7 @@ export const Search = styled.div`
     width: 100%;
     align-items: center;
     justify-content: center;
-    background-color: white;
+    background-color: #92b4ec;
     border-radius: 8px;
 
     img {
@@ -70,11 +112,11 @@ export const Search = styled.div`
   input {
     flex-grow: 2;
     width: 100%;
-    height:40px;
-    color: white;
+    height: 40px;
+    color: black;
     padding: 8px;
     &::placeholder {
-      color: #75758b;
+      color: black;
     }
   }
 `;
@@ -85,7 +127,7 @@ export const Login = styled.div`
   span {
     display: flex;
     width: 120px;
-    color: white;
+    color: black;
     font-size: 12px;
     font-weight: bold;
   }

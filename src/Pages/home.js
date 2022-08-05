@@ -11,7 +11,6 @@ const Home = () => {
     <S.WrapperHome>
     <Promos/>
     <Products/>
-  
     <Footer/>
     </S.WrapperHome>
   );

@@ -8,51 +8,93 @@ import Wishlist from "../Wishlist";
 
 export const Header = () => {
   const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => console.log('data');
+  const onSubmit = (data) => console.log("data");
   const { imageUrl, logedInState, cleanSession, searchFilter } = useStore();
-  const cs = () =>[
-    cleanSession()
-  ]
+  const cs = () => [cleanSession()];
   return (
     <S.Wrapper>
-      <S.Line>
-      <S.Buttons>
-        <Link to="/">
-          <button>Home</button>
-        </Link>
-      </S.Buttons>
-      <S.Search>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <input {...register("item")} placeholder="Busque aqui o seu produto"  onChange={(event)=>searchFilter(event.target.value)} />
-            <img src={`${imageUrl}/lupa.png`}  width="28" height="28"  />
-        </form>
-      </S.Search>
-      <S.Login>
-        <img src={`${imageUrl}/user.png`} width="28" height="28"  />
-        <span>Olá, faça seu login ou cadastre-se V</span>
-        {logedInState ? (
-          <button>Perfil</button>
-        ) : (
-          <Link to="/login">
-            <button>Login</button>
+      <S.Line style={{ marginTop: "15px" }}>
+        <S.Buttons>
+          <Link to="/">
+            <button>Home</button>
           </Link>
-        )}
-        {logedInState ? (
-          <button onClick={cs} >Sair</button>
-        ) : (
-          <Link to="/registro">
-            <button>Registre-se</button>
-          </Link>
-        )}
-      </S.Login>
-      <S.Cart>
-        <Cart />
-        <Wishlist />
-      </S.Cart>
+        </S.Buttons>
+        <S.Search>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <input
+              {...register("item")}
+              placeholder="Busque aqui o seu produto"
+              onChange={(event) => searchFilter(event.target.value)}
+            />
+            <img src={`${imageUrl}/lupa.png`} width="28" height="28" />
+          </form>
+        </S.Search>
+        <S.Login>
+          <img src={`${imageUrl}/user.png`} width="28" height="28" />
+          <span>Olá, faça seu login ou cadastre-se V</span>
+          {logedInState ? (
+            <button>Perfil</button>
+          ) : (
+            <Link to="/login">
+              <button>Login</button>
+            </Link>
+          )}
+          {logedInState ? (
+            <button onClick={cs}>Sair</button>
+          ) : (
+            <Link to="/registro">
+              <button>Registre-se</button>
+            </Link>
+          )}
+        </S.Login>
+        <S.Cart>
+          <Cart />
+          <Wishlist />
+        </S.Cart>
       </S.Line>
       <S.Line>
-        <S.Nav>
-        <span>informe seu cep</span>
+        <S.Nav style={{ height: "45px" }}>
+          <div id="cep">
+            <img src={`${imageUrl}/local.png`} width="32" />
+            <span>informe seu cep</span>
+          </div>
+          <ul>
+            <li>
+              <a href="#" className="trend">
+                trend item
+              </a>
+            </li>
+            <li>
+              <a href="#" className="trend">
+                trend item
+              </a>
+            </li>
+            <li>
+              <a href="#" className="trend">
+                trend item
+              </a>
+            </li>
+            <li>
+              <a href="#" className="trend">
+                trend item
+              </a>
+            </li>
+            <li>
+              <a href="#" className="trend">
+                trend item
+              </a>
+            </li>
+            <li>
+              <a href="#" className="trend">
+                trend item
+              </a>
+            </li>
+            <li>
+              <a href="#" className="trend">
+                trend item
+              </a>
+            </li>
+          </ul>
         </S.Nav>
       </S.Line>
     </S.Wrapper>
