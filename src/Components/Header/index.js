@@ -25,10 +25,11 @@ export const Header = () => {
       <S.Search>
         <form onSubmit={handleSubmit(onSubmit)}>
           <input {...register("item")} placeholder="Busque aqui o seu produto"  onChange={(event)=>searchFilter(event.target.value)} />
-
+            <img src={`${imageUrl}/lupa.png`}  width="28" height="28"  />
         </form>
       </S.Search>
       <S.Login>
+        <span>Olá, faça seu login ou cadastre-se</span>
         {logedInState ? (
           <button>Perfil</button>
         ) : (
