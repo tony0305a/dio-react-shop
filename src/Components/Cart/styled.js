@@ -9,14 +9,14 @@ span{
   color:white;
   width:24px;
   height:24px;
-  background-color:#6CC947;
+  background-color:#0022B5;
   border-radius:100%;
   padding:4px;
   font-size:12px;
   justify-content:center;
   position:relative;
   left:-10px;
-  top:10px;
+  top:-10px;
 }
 `;
 

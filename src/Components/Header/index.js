@@ -4,6 +4,7 @@ import * as S from "./styled";
 import { useForm } from "react-hook-form";
 import useStore from "../../Hooks/store-hook";
 import Cart from "../Cart";
+import Wishlist from "../Wishlist";
 
 export const Header = () => {
   const { register, handleSubmit } = useForm();
@@ -14,12 +15,10 @@ export const Header = () => {
   ]
   return (
     <S.Wrapper>
+      <S.Line>
       <S.Buttons>
         <Link to="/">
           <button>Home</button>
-        </Link>
-        <Link to="/contato">
-          <button>Sobre</button>
         </Link>
       </S.Buttons>
       <S.Search>
@@ -48,7 +47,14 @@ export const Header = () => {
       </S.Login>
       <S.Cart>
         <Cart />
+        <Wishlist />
       </S.Cart>
+      </S.Line>
+      <S.Line>
+        <S.Nav>
+        <span>informe seu cep</span>
+        </S.Nav>
+      </S.Line>
     </S.Wrapper>
   );
 };

@@ -3,7 +3,8 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
   display: flex;
   background-color: #0d6efd;
-  height: 80px;
+  flex-direction:column;
+  height: 160px;
   width: 100%;
   align-items: center;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
@@ -11,6 +12,19 @@ export const Wrapper = styled.div`
   @media screen and (max-width: 720px) {
     justify-content: space-between;
   }
+`;
+export const Line = styled.div`
+display:flex;
+width:100%;
+align-items:center;
+margin-top:32px;
+`;
+export const Nav = styled.div`
+span{
+  font-weight:bold;
+  color:white;
+}
+
 `;
 export const Buttons = styled.div`
   display: flex;
@@ -44,8 +58,8 @@ export const Search = styled.div`
     background-color: white;
     border-radius: 8px;
 
-    img{
-      margin-inline:8px;
+    img {
+      margin-inline: 8px;
     }
 
     @media screen and (max-width: 600px) {
@@ -56,10 +70,11 @@ export const Search = styled.div`
   input {
     flex-grow: 2;
     width: 100%;
+    height:40px;
     color: white;
     padding: 8px;
     &::placeholder {
-      color: #75758B;
+      color: #75758b;
     }
   }
 `;
@@ -67,18 +82,18 @@ export const Login = styled.div`
   display: flex;
   margin: 8px;
   align-items: center;
-  span{
-    display:flex;
-    width:120px;
-    color:white;
-    font-size:12px;
-    font-weight:bold;
+  span {
+    display: flex;
+    width: 120px;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
   }
-  img{
-    margin-inline:12px;
+  img {
+    margin-inline: 12px;
   }
   button {
-    display:none;
+    display: none;
     margin: 4px;
     color: white;
     &:hover {
@@ -93,18 +108,18 @@ export const Cart = styled.div`
     color: white;
     width: 24px;
     height: 24px;
-    background-color: #6cc947;
+    background-color: #0022b5;
     border-radius: 100%;
     padding: 4px;
     font-size: 12px;
     justify-content: center;
     position: relative;
     left: -10px;
-    top: 10px;
+    top: -10px;
     &:hover {
-      font-size: 24px;
-      width: 48px;
-      height: 48px;
+      font-size: 16px;
+      width: 32px;
+      height: 32px;
     }
   }
 `;
