@@ -29,7 +29,8 @@ export const Header = () => {
         </form>
       </S.Search>
       <S.Login>
-        <span>Olá, faça seu login ou cadastre-se</span>
+        <img src={`${imageUrl}/user.png`} width="28" height="28"  />
+        <span>Olá, faça seu login ou cadastre-se V</span>
         {logedInState ? (
           <button>Perfil</button>
         ) : (

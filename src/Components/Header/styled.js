@@ -74,6 +74,9 @@ export const Login = styled.div`
     font-size:12px;
     font-weight:bold;
   }
+  img{
+    margin-inline:12px;
+  }
   button {
     display:none;
     margin: 4px;
