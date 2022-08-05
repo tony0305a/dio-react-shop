@@ -46,10 +46,10 @@ export const Search = styled.div`
   input {
     flex-grow: 2;
     width: 100%;
-    background-color: #0d8dfd;
+    background-color: white;
     color: white;
     padding: 8px;
-    border-radius: 4px;
+    border-radius: 8px;
     &::placeholder {
       color: lightgray;
     }
