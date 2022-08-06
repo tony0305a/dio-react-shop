@@ -31,7 +31,16 @@ export const Header = () => {
         </S.Search>
         <S.Login>
           <img src={`${imageUrl}/user.png`} width="28" height="28" />
-          <span>Olá, faça seu login ou cadastre-se V</span>
+          <S.Drop>
+          <span>Olá, faça seu login ou cadastre-se</span>
+          <div className="dropdown-content">
+            <p>Para uma experiência personalizada, acesse sua conta :)</p>
+            <div style={{display:'flex', flexDirection:'column', justifyContent:'center', width:'100%', alignItems:'center'}} >
+            <a href="#" className="login" >Entrar</a>
+            <a href="#" className="reg" >Cadastre-se</a>
+            </div>
+          </div>
+          </S.Drop>
           {logedInState ? (
             <button>Perfil</button>
           ) : (

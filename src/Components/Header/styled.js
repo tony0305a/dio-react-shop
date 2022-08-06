@@ -165,3 +165,48 @@ export const Cart = styled.div`
     }
   }
 `;
+export const Drop = styled.div`
+position:relative;
+display:inline-block;
+.dropdown-content{
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  justify-content:center;
+  min-width: 250px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1;
+  p{
+    font-size:12px;
+  }
+  .login{
+    background-color:#7F5283;
+    padding:8px 8px;
+    margin:4px;
+    border-radius:8px;
+    color:white;
+    transition: all ease 1.2s;
+    &:hover{
+        background-color:#3D3C42;
+    }
+  }
+  .reg{
+    background-color:white;
+    padding:8px 8px;
+    margin:4px;
+    border-radius:8px;
+    border:2px solid #7F5283;
+    color:#7F5283;
+    transition: all ease 1.2s;
+    &:hover{
+        background-color:#3D3C42;
+        color:white;
+    }
+  }
+}
+&:hover .dropdown-content{
+    display:flex;
+    flex-direction:column;
+}
+`;
